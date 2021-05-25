@@ -1,0 +1,98 @@
+.carousel{
+    width: 100%;
+    overflow: scroll;
+    padding: 30px;
+    /*- Pos:Relative porque queremos que los elementos que hereden se ajusten con base en este elemento*/
+    position: relative;
+}
+
+/* 1.- WhiteSpace nowrap Enlista todos los elementos en un solo renglón.
+   2.- Establecemmos un pequeño espaciado entre los elementos de la lista.
+  3.- Padding de 10px para evitar que se nos corte el elemento cuando hagamos hover
+-*/
+    
+.carousel__container{
+    white-space: nowrap;
+    margin: 70px 0px;
+    padding-bottom:10px ;
+}
+
+
+.carousel-item {
+    background-color: brown;
+    width: 200px;
+    height: 250px;
+    border-radius: 30px;
+    overflow: hidden;
+    margin-right: 10px;
+    /*InLineBlock: Un item al lado del otro*/
+    display: inline-block;
+    /*Cambia el icono del mouse cuando selecciona el elemento*/
+    cursor: pointer;
+    /*Suaviza la transcisión para que se vea agradable*/
+    transition: 450ms all;
+    /*Ajusta los elementos para que no se salgan y empiecen de izq a derecha*/
+    transform-origin: center left;
+    /*Para que pueda coger los estilos*/
+    position: relative;
+}
+
+/*Carousel hover.
+1.- Desplaza los elemenots hacia la derecha
+2.- ~ Selecciona todos los elementos excepto el elemento que está seleccionado
+*/
+
+.carousel-item:hover ~ .carousel-item {
+transform: translate3d(100px, 0, 0);
+}
+
+/*Opasidad*/
+.carousel__container:hover .carousel-item {
+    opacity: .3;
+}
+
+/*
+1.- Escala en 1.5 la imagen seleccionada
+2.- Cuando se le haga hover a un elemento especīfico, pone la opacidad en 1.
+*/
+.carousel__container:hover .carousel-item:hover {
+        transform: scale(1.5);
+        opacity: 1;
+}
+
+.carousel-item__img{
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.carousel-item__details{
+    background: var(--degradados);
+    font-size: 10px;
+    opacity: 0;
+    transition: 450ms opacity;
+    padding: 10px;
+    position: absolute;
+    top: 180px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.carousel-item__details:hover {
+    opacity: 1;
+}
+
+.carousel-item__details--title {
+    color: white;
+    font-size: 10px;
+    font-weight: bolder;
+}
+.carousel-item__details--subtitle {
+    color: white;
+    font-size: 8px;
+}
